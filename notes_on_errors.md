@@ -77,3 +77,36 @@ let content =fs:read_to_string(filename).expect("Error while reading file")
   }
 
   ```
+
+
+### Creating custom errors
+
+- if you need to implement your own custom types
+you need  to implement the Error trait just like any other trait
+-also your error type must aslo implement the Debug and and Display::fmt trait
+
+#### *example shown below*
+
+``` rust
+#[derive(Debug)]   //implements the Debug trait
+enum MyError {
+  Error1,
+  Error2
+}
+
+// implementing the error trait own type MyError
+impl std::Error for MyError {};
+
+
+impl fmt::Display for MyError {
+  fn fmt(&self,f:& mut fmt::Formatter)->fmt::Result{
+    match self {
+      MyError::Error1=>write(f,"Error 1 occurred "),
+      MyError::Error2=>write(f,"Error 2 occurred")
+    }
+  }
+}
+
+
+
+```

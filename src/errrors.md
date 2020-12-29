@@ -1,5 +1,8 @@
 ## Handling errors in rust
 
+- Rust has 
+``` 
+
 1.using unwrap
 - this ignores the error  for example
   
